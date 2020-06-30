@@ -6,11 +6,11 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title:  kokoyuo
-subtitle: 分享技术，品味人生
-name: kokoyuo
-description: 本站是kokoyuo的技术分享博客。内容涵盖生活故事、Java后端技术、数据库技术等相关的研究与知识分享。
-keywords: kokoyuo,Spring,Spring Boot,Spring Cloud,MongoDB,Jvm,Docker,生活故事,架构,大数据,一线,FastDFS,开发者,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,IT技术博客,Java,Python,
+title:  dadaguo
+subtitle: 好好学习，天天向上
+name: dadaguo
+description: 本站是dadaguo的技术分享博客。内容涵盖生活故事、Java后端技术、数据库技术等相关的研究与知识分享。
+keywords: dadaguo,Spring,Spring Boot,Spring Cloud,MongoDB,Jvm,Docker,生活故事,架构,大数据,一线,FastDFS,开发者,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,IT技术博客,Java,Python,
 encoding: "utf-8"
 favicon: favicon.png
 
