@@ -18,7 +18,7 @@ tags: [springcloud]
 ## 推荐博客
 
 
-- [纯洁的微笑](http://www.ityouknow.com/spring-cloud)
+- [dadaguo](http://www.ityouknow.com/spring-cloud)
 
 - [程序猿DD](http://blog.didispace.com/categories/Spring-Cloud/) 
 

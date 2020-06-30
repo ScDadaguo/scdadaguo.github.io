@@ -97,7 +97,7 @@ public class WebConfiguration {
 ### 配置在application.properties中
 
 ``` xml
-com.neo.title=纯洁的微笑
+com.neo.title=dadaguo
 com.neo.description=分享生活和技术
 ```
 
@@ -393,7 +393,7 @@ bootRun {
 
 -------------
 
-**作者：纯洁的微笑**  
+**作者：dadaguo**  
 **出处：[www.ityouknow.com](http://www.ityouknow.com)**    
 **版权所有，欢迎保留原文链接进行转载：)**
 
