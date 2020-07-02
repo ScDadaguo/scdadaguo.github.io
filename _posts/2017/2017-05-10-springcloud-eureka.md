@@ -285,9 +285,9 @@ java -jar spring-cloud-eureka-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer3
 可以在peer1中看到了peer2、peer3的相关信息。至此eureka集群也已经完成了
 
 
-**[示例代码-github](https://github.com/ityouknow/spring-cloud-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-cloud-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-cloud-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-cloud-examples)**
 
 
 参考：
@@ -300,5 +300,5 @@ java -jar spring-cloud-eureka-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer3
 -------------
 
 **作者：dadaguo**  
-**出处：[http://www.ityouknow.com/](http://www.ityouknow.com/springcloud/2017/05/10/springcloud-eureka.html)**      
+**出处：[http://www.dadaguo.com/](http://www.dadaguo.com/springcloud/2017/05/10/springcloud-eureka.html)**      
 **版权归作者所有，转载请注明出处** 

@@ -114,9 +114,9 @@ public interface HelloRemote {
 
 
 
-**[示例代码-github](https://github.com/ityouknow/spring-cloud-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-cloud-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-cloud-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-cloud-examples)**
 
 参考：
 
@@ -126,6 +126,6 @@ public interface HelloRemote {
 
 -------------
 **作者：dadaguo**  
-**出处：[http://www.ityouknow.com/](http://www.ityouknow.com/springcloud/2017/05/16/springcloud-hystrix.html)**      
+**出处：[http://www.dadaguo.com/](http://www.dadaguo.com/springcloud/2017/05/16/springcloud-hystrix.html)**      
 **版权归作者所有，转载请注明出处** 
 

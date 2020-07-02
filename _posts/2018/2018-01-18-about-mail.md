@@ -94,7 +94,7 @@ import javax.activation.*;
 public class SendEmail{
    public static void main(String [] args){   
       // 收件人电子邮箱
-      String to = "ityouknow@gmail.com";
+      String to = "dadaguo@gmail.com";
       // 发件人电子邮箱
       String from = "webMail@gmail.com";
       // 指定发送邮件的主机为 localhost
@@ -136,7 +136,7 @@ public void simpleSend() {
     SimpleMailMessage smm = new SimpleMailMessage();
     // 设定邮件参数
     smm.setFrom(mailSender.getUsername());
-    smm.setTo("ityouknow@126.com");
+    smm.setTo("dadaguo@126.com");
     smm.setSubject("Hello world");
     smm.setText("Hello world via spring mail sender");
     // 发送邮件

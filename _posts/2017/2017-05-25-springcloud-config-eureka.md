@@ -43,7 +43,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/ityouknow/spring-cloud-starter/     # 配置git仓库的地址
+          uri: https://github.com/dadaguo/spring-cloud-starter/     # 配置git仓库的地址
           search-paths: config-repo                             # git仓库地址下的相对地址，可以配置多个，用,分割。
           username: username                                        # git仓库的账号
           password: password                                    # git仓库的密码
@@ -175,7 +175,7 @@ public class ConfigClientApplication {
     "state": null, 
     "propertySources": [
         {
-            "name": "https://github.com/ityouknow/spring-cloud-starter/config-repo/neo-config-dev.properties", 
+            "name": "https://github.com/dadaguo/spring-cloud-starter/config-repo/neo-config-dev.properties", 
             "source": {
                 "neo.hello": "hello im dev"
             }
@@ -189,11 +189,11 @@ public class ConfigClientApplication {
 再次访问：```http://localhost:8002/hello```，返回：```hello im dev update```。说明客户端已经读取到了server端的内容，我们随机停掉一台server端的服务，再次访问```http://localhost:8002/hello```，返回：```hello im dev update```，说明达到了高可用的目的。
 
 
-**[示例代码-github](https://github.com/ityouknow/spring-cloud-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-cloud-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-cloud-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-cloud-examples)**
 
 -------------
 **作者：dadaguo**  
-**出处：[http://www.ityouknow.com/](http://www.ityouknow.com/springcloud/2017/05/25/springcloud-config-eureka.html)**      
+**出处：[http://www.dadaguo.com/](http://www.dadaguo.com/springcloud/2017/05/25/springcloud-config-eureka.html)**      
 **版权归作者所有，转载请注明出处** 

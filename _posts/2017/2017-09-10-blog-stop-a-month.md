@@ -7,7 +7,7 @@ tags: [other]
 
 发生了什么
 
-细心的同学会发现虽然公众号每周还在更新，但是我的博客[www.ityouknow.com](http://www.ityouknow.com/)有一月多都没有更新了。这其中有两个原因，第一呢去了新公司996各种忙乱，没有太多的时间，但最主要的问题是博客更新不了，每次提交都会报错。
+细心的同学会发现虽然公众号每周还在更新，但是我的博客[www.dadaguo.com](http://www.dadaguo.com/)有一月多都没有更新了。这其中有两个原因，第一呢去了新公司996各种忙乱，没有太多的时间，但最主要的问题是博客更新不了，每次提交都会报错。
 
 我的博客托管在Github上，每次写文章的节奏都是这样子的：在sublime text3上面使用markdown语法来写文章，写完文章之后，使用Github Desktop提交到Github，Github会自动进行构建，这样文章就发布到博客中，然后我再复制文章内容同步到公众号、博客园、CSDN。这次博客突然提交文章报错，导致我写文章的节奏完全被打乱了，为什么会这样呢，这个事还得从头说起。
 
@@ -19,7 +19,7 @@ tags: [other]
 博客使用了一年多，期间一直都很稳定，中间做过一次升级，增加了移动端动态适配。一月前，答应给[丑胖侠](http://blog.csdn.net/wo541075754)同学加一个友情连接，按照往常的情况，修改link.md文件添加一条记录然后提交。过了一会发现博客link页面并没有更新过来，反而收到了github自动回复的一封邮件，如下：
 
 ``` text
-主题：[ityouknow/ityouknow.github.io] Page build failure
+主题：[dadaguo/dadaguo.github.io] Page build failure
 
 内容：
 The page build failed for the `master` branch with the following error: 
@@ -49,7 +49,7 @@ Hi:
 第二天就收到了Github官方的回复邮件：
 
 ``` text
-Hi ityouknow,
+Hi dadaguo,
 Here's the full error we're seeing:
 
 [31m  Liquid Exception: no implicit conversion of Integer into String in /_layouts/default.html[0m
@@ -75,21 +75,21 @@ Thomas
 ``` text
 Hi 您好：
 
-首先非常感谢你开源这个主题，我使用了你的主题做了博客：www.ityouknow.com。最近提交的时候总是报错，我给Github官方发送了邮件，回复说有可能是组件依赖过低的问题，我自己对前端来说是小白，请求给予帮忙，谢谢。
+首先非常感谢你开源这个主题，我使用了你的主题做了博客：www.dadaguo.com。最近提交的时候总是报错，我给Github官方发送了邮件，回复说有可能是组件依赖过低的问题，我自己对前端来说是小白，请求给予帮忙，谢谢。
 
 可以有偿帮助，我的微信/QQ:xxxxx.
 ```
 
 过了一周，可能作者没有注意到github提交的issues和我的邮件，然后我再次发送了邮件给作者，仍然没有收到回复。于是我想使用这个主题的博主应该也不只我一个，会不会他们也遇到了同样的问题，有的可能有能力解决了此问题。在Github上面查看了Yummy-Jekyll主题的所有fork记录，查看了很多的博主，大多都仅仅是停留在fork没动过，或者写了一两篇后就停止了，这个方向又陷入了死胡同。
 
-又过了几天想着自己好好研究下前端和Gemfile兴许可以解决掉，于是我将博客代码在coding.net复制了一份[ityouknow](https://coding.net/u/ityouknow/p/ityouknow/git)，因为使用coding.net在打包的时候可以查看日志，如果报错可以看到具体的错误信息。于是我就一边试着修改相关代码和配置，一边不断的重新部署查看错误日志，再根据错误日志在谷歌上搜索相关的解决方案，这个过程持续了大概两个半天，终究还是没有解决，前端对我来说仍然像谜一样。
+又过了几天想着自己好好研究下前端和Gemfile兴许可以解决掉，于是我将博客代码在coding.net复制了一份[dadaguo](https://coding.net/u/dadaguo/p/dadaguo/git)，因为使用coding.net在打包的时候可以查看日志，如果报错可以看到具体的错误信息。于是我就一边试着修改相关代码和配置，一边不断的重新部署查看错误日志，再根据错误日志在谷歌上搜索相关的解决方案，这个过程持续了大概两个半天，终究还是没有解决，前端对我来说仍然像谜一样。
 
 ## 出现转机
 
 求助主题作者和自力更生都无果之后，就想着找一些对jekyll和前端比较熟悉的大牛，帮我看看如何去解决。在QQ群中发了一些求助信息后，也没有找到合适的对象，于是就想到了[v2ex](https://www.v2ex.com/)，以前总听说v2ex是一个神奇的社区，但我完全不明白神奇在哪里，以前也使用过一两次，也么看出个所以然。当然我还是抱着死马当作活马医的态度在v2ex发了一个帖子：
 
 <div align="center">
-  <img src="http://www.ityouknow.com/assets/images/2017/v2ex.png">
+  <img src="http://www.dadaguo.com/assets/images/2017/v2ex.png">
 </div>
 
 不一会，就收到了一个网友的回复："上班中，现在没时间帮你验证， 你把 readme 删掉试试是否 ok"，虽然我明明知道这个建议是多么的不靠谱，但我还是试了，仍然报错。突然在v2ex上有一个叫做"lzhr"的小伙伴给我回复了这么一条信息：

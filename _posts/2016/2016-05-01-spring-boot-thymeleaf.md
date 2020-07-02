@@ -5,7 +5,7 @@ category: springboot
 tags: [thymeleaf]
 ---
 
-在上篇文章[springboot(二)：web综合开发](http://www.ityouknow.com/springboot/2016/02/03/spring-boot-web.html)中简单介绍了一下thymeleaf，这篇文章将更加全面详细的介绍thymeleaf的使用。thymeleaf 是新一代的模板引擎，在spring4.0中推荐使用thymeleaf来做前端模版引擎。
+在上篇文章[springboot(二)：web综合开发](http://www.dadaguo.com/springboot/2016/02/03/spring-boot-web.html)中简单介绍了一下thymeleaf，这篇文章将更加全面详细的介绍thymeleaf的使用。thymeleaf 是新一代的模板引擎，在spring4.0中推荐使用thymeleaf来做前端模版引擎。
 
 
 ## thymeleaf介绍
@@ -465,9 +465,9 @@ htmlhead 是指定义的代码片段 如 ```th:fragment="copy"```
 
 这里有一个开源项目几乎使用了这里介绍的所有标签和布局，大家可以参考：
 
-**[示例代码-github](https://github.com/ityouknow/spring-boot-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-boot-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-boot-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-boot-examples)**
 
 ## 参考 
 
@@ -482,7 +482,7 @@ htmlhead 是指定义的代码片段 如 ```th:fragment="copy"```
 -------------
 
 **作者：dadaguo**  
-**出处：[www.ityouknow.com](http://www.ityouknow.com)**   
+**出处：[www.dadaguo.com](http://www.dadaguo.com)**   
 **版权所有，欢迎保留原文链接进行转载：)**
 
 

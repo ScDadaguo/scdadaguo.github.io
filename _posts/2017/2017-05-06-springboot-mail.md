@@ -82,7 +82,7 @@ public class MailServiceTest {
 
     @Test
     public void testSimpleMail() throws Exception {
-        MailService.sendSimpleMail("ityouknow@126.com","test simple mail"," hello this is simple mail");
+        MailService.sendSimpleMail("dadaguo@126.com","test simple mail"," hello this is simple mail");
     }
 }
 ```
@@ -129,7 +129,7 @@ public void testHtmlMail() throws Exception {
             "    <h3>hello world ! 这是一封Html邮件!</h3>\n" +
             "</body>\n" +
             "</html>";
-    MailService.sendHtmlMail("ityouknow@126.com","test simple mail",content);
+    MailService.sendHtmlMail("dadaguo@126.com","test simple mail",content);
 }
 ```
 
@@ -168,7 +168,7 @@ public void sendAttachmentsMail(String to, String subject, String content, Strin
 @Test
 public void sendAttachmentsMail() {
     String filePath="e:\\tmp\\application.log";
-    mailService.sendAttachmentsMail("ityouknow@126.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
+    mailService.sendAttachmentsMail("dadaguo@126.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
 }
 ```
 
@@ -209,7 +209,7 @@ public void sendInlineResourceMail() {
     String content="<html><body>这是有图片的邮件：<img src=\'cid:" + rscId + "\' ></body></html>";
     String imgPath = "C:\\Users\\summer\\Pictures\\favicon.png";
 
-    mailService.sendInlineResourceMail("ityouknow@126.com", "主题：这是有图片的邮件", content, imgPath, rscId);
+    mailService.sendInlineResourceMail("dadaguo@126.com", "主题：这是有图片的邮件", content, imgPath, rscId);
 }
 ```
 
@@ -257,7 +257,7 @@ public void sendInlineResourceMail() {
     </head>
     <body>
         您好,这是验证邮件,请点击下面的链接完成验证,<br/>
-        <a href="#" th:href="@{ http://www.ityouknow.com/neo/{id}(id=${id}) }">激活账号</a>
+        <a href="#" th:href="@{ http://www.dadaguo.com/neo/{id}(id=${id}) }">激活账号</a>
     </body>
 </html>
 ```
@@ -272,7 +272,7 @@ public void sendTemplateMail() {
     context.setVariable("id", "006");
     String emailContent = templateEngine.process("emailTemplate", context);
 
-    mailService.sendHtmlMail("ityouknow@126.com","主题：这是模板邮件",emailContent);
+    mailService.sendHtmlMail("dadaguo@126.com","主题：这是模板邮件",emailContent);
 }
 ```
 
@@ -289,12 +289,12 @@ public void sendTemplateMail() {
 
 很多时候邮件发送并不是我们主业务必须关注的结果，比如通知类、提醒类的业务可以允许延时或者失败。这个时候可以采用异步的方式来发送邮件，加快主交易执行速度，在实际项目中可以采用MQ发送邮件相关参数，监听到消息队列之后启动发送邮件。
 
-可以参考前期文章：[springboot(八)：RabbitMQ详解](http://www.ityouknow.com/springboot/2016/11/30/springboot(%E5%85%AB)-RabbitMQ%E8%AF%A6%E8%A7%A3.html) 来实现。
+可以参考前期文章：[springboot(八)：RabbitMQ详解](http://www.dadaguo.com/springboot/2016/11/30/springboot(%E5%85%AB)-RabbitMQ%E8%AF%A6%E8%A7%A3.html) 来实现。
 
 
-**[示例代码-github](https://github.com/ityouknow/spring-boot-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-boot-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-boot-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-boot-examples)**
 
 **参考:**
 [spring boot 发送邮件](http://blog.csdn.net/clementad/article/details/51833416)
@@ -303,5 +303,5 @@ public void sendTemplateMail() {
 -------------
 
 **作者：dadaguo**  
-**出处：[http://www.ityouknow.com/](http://www.ityouknow.com/springboot/2017/05/06/springboot-mail.html)**      
+**出处：[http://www.dadaguo.com/](http://www.dadaguo.com/springboot/2017/05/06/springboot-mail.html)**      
 **版权归作者所有，转载请注明出处** 

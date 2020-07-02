@@ -12,7 +12,7 @@ no-post-nav: true
 
 ## 博客
 
-- [dadaguo](http://www.ityouknow.com)
+- [dadaguo](http://www.dadaguo.com)
 
 - [粉丝日志](http://blog.fens.me/series-hadoop-family/)
 

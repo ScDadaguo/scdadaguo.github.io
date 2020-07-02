@@ -203,13 +203,13 @@ public class UserController {
 }
 ```
 
-**[示例代码-github](https://github.com/ityouknow/spring-boot-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-boot-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-boot-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-boot-examples)**
 
 
 -------------
 
 **作者：dadaguo**  
-**出处：[www.ityouknow.com](http://www.ityouknow.com)**
+**出处：[www.dadaguo.com](http://www.dadaguo.com)**
 **版权所有，欢迎保留原文链接进行转载：)**

@@ -72,9 +72,9 @@ Spring Cloud Zuul路由是微服务架构的不可或缺的一部分，提供动
 spring.application.name=gateway-service-zuul
 server.port=8888
 
-#这里的配置表示，访问/it/** 直接重定向到http://www.ityouknow.com/**
+#这里的配置表示，访问/it/** 直接重定向到http://www.dadaguo.com/**
 zuul.routes.baidu.path=/it/**
-zuul.routes.baidu.url=http://www.ityouknow.com/
+zuul.routes.baidu.url=http://www.dadaguo.com/
 ```
 
 3、启动类
@@ -97,7 +97,7 @@ public class GatewayServiceZuulApplication {
 
 4、测试
 
-启动```gateway-service-zuul-simple```项目，在浏览器中访问：```http://localhost:8888/it/spring-cloud```，看到页面返回了：```http://www.ityouknow.com/spring-cloud ``` 页面的信息，如下：
+启动```gateway-service-zuul-simple```项目，在浏览器中访问：```http://localhost:8888/it/spring-cloud```，看到页面返回了：```http://www.dadaguo.com/spring-cloud ``` 页面的信息，如下：
 
  
 ![](http://www.itmind.net/assets/images/2017/springcloud/zuul-01.jpg)
@@ -200,11 +200,11 @@ hello 小明，this is two messge
 
 [API网关那些儿](http://yunlzheng.github.io/2017/03/14/the-things-about-api-gateway/)
 
-**[示例代码-github](https://github.com/ityouknow/spring-cloud-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-cloud-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-cloud-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-cloud-examples)**
 
 -------------
 **作者：dadaguo**  
-**出处：[http://www.ityouknow.com/](http://www.ityouknow.com/springcloud/2017/06/01/gateway-service-zuul.html)**      
+**出处：[http://www.dadaguo.com/](http://www.dadaguo.com/springcloud/2017/06/01/gateway-service-zuul.html)**      
 **版权归作者所有，转载请注明出处** 

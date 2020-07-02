@@ -29,19 +29,19 @@ excerpt: 初心还在。
 
 2、[我的博客](http://www.itmind.net/)
 
-[www.ityouknow.com](http://www.itmind.net/)，这个博客是我独立搭建的网站，任何时候都会存在，并且此博客只发表我自己的文章，很纯洁。
+[www.dadaguo.com](http://www.itmind.net/)，这个博客是我独立搭建的网站，任何时候都会存在，并且此博客只发表我自己的文章，很纯洁。
 
-3、[我的知乎](https://www.zhihu.com/people/ityouknow/)
+3、[我的知乎](https://www.zhihu.com/people/dadaguo/)
 
-[https://www.zhihu.com/people/ityouknow/](https://www.zhihu.com/people/ityouknow/)，知乎也是我经常逛的一个网站，不时的会回答一些问题，在知乎专栏上面也会发布我的最新文章。
+[https://www.zhihu.com/people/dadaguo/](https://www.zhihu.com/people/dadaguo/)，知乎也是我经常逛的一个网站，不时的会回答一些问题，在知乎专栏上面也会发布我的最新文章。
 
-4、[我的微博](https://weibo.com/ityouknow)
+4、[我的微博](https://weibo.com/dadaguo)
 
-[https://weibo.com/ityouknow](https://weibo.com/ityouknow)，虽然没有怎么用，但偶尔也会上去看两眼。
+[https://weibo.com/dadaguo](https://weibo.com/dadaguo)，虽然没有怎么用，但偶尔也会上去看两眼。
 
-5、[我的 Github](https://github.com/ityouknow)
+5、[我的 Github](https://github.com/dadaguo)
 
-[https://github.com/ityouknow](https://github.com/ityouknow)，如果你是一个程序员，这里是我分享开源代码的地方，可以选择 Fllow 关注我的动态。
+[https://github.com/dadaguo](https://github.com/dadaguo)，如果你是一个程序员，这里是我分享开源代码的地方，可以选择 Fllow 关注我的动态。
 
 6、搜索引擎
 

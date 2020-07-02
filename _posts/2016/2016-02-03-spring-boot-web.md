@@ -5,7 +5,7 @@ category: springboot
 tags: [springboot]
 ---
 
-上篇文章介绍了Spring boot初级教程：[spring boot(一)：入门篇](http://www.ityouknow.com/springboot/2016/01/06/spring-boot-quick-start.html)，方便大家快速入门、了解实践Spring boot特性；本篇文章接着上篇内容继续为大家介绍spring boot的其它特性（有些未必是spring boot体系桟的功能，但是是spring特别推荐的一些开源技术本文也会介绍），对了这里只是一个大概的介绍，特别详细的使用我们会在其它的文章中来展开说明。
+上篇文章介绍了Spring boot初级教程：[spring boot(一)：入门篇](http://www.dadaguo.com/springboot/2016/01/06/spring-boot-quick-start.html)，方便大家快速入门、了解实践Spring boot特性；本篇文章接着上篇内容继续为大家介绍spring boot的其它特性（有些未必是spring boot体系桟的功能，但是是spring特别推荐的一些开源技术本文也会介绍），对了这里只是一个大概的介绍，特别详细的使用我们会在其它的文章中来展开说明。
 
 
 ##  web开发
@@ -379,9 +379,9 @@ bootRun {
 
 就可以正常使用了！
 
-**[示例代码-github](https://github.com/ityouknow/spring-boot-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-boot-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-boot-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-boot-examples)**
 
 ## 参考：
 
@@ -394,7 +394,7 @@ bootRun {
 -------------
 
 **作者：dadaguo**  
-**出处：[www.ityouknow.com](http://www.ityouknow.com)**    
+**出处：[www.dadaguo.com](http://www.dadaguo.com)**    
 **版权所有，欢迎保留原文链接进行转载：)**
 
 

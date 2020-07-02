@@ -5,10 +5,10 @@ category: springboot
 tags: [springboot]
 ---
 
-在上篇文章[springboot(二)：web综合开发](http://www.ityouknow.com/springboot/2016/02/03/spring-boot-web.html)中简单介绍了一下spring data jpa的基础性使用，这篇文章将更加全面的介绍spring data jpa 常见用法以及注意事项
+在上篇文章[springboot(二)：web综合开发](http://www.dadaguo.com/springboot/2016/02/03/spring-boot-web.html)中简单介绍了一下spring data jpa的基础性使用，这篇文章将更加全面的介绍spring data jpa 常见用法以及注意事项
 
 
-使用spring data jpa 开发时，发现国内对spring boot jpa全面介绍的文章比较少案例也比较零碎，因此写文章总结一下。本人也正在翻译[Spring Data JPA 参考指南](https://www.gitbook.com/book/ityouknow/spring-data-jpa-reference-documentation/details),有兴趣的同学欢迎联系我，一起加入翻译中！
+使用spring data jpa 开发时，发现国内对spring boot jpa全面介绍的文章比较少案例也比较零碎，因此写文章总结一下。本人也正在翻译[Spring Data JPA 参考指南](https://www.gitbook.com/book/dadaguo/spring-data-jpa-reference-documentation/details),有兴趣的同学欢迎联系我，一起加入翻译中！
 
 
 ## spring data jpa介绍
@@ -324,20 +324,20 @@ private String  userName;
 
 这里有一个开源项目几乎使用了这里介绍的所有标签和布局，大家可以参考：
 
-**[示例代码-github](https://github.com/ityouknow/spring-boot-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-boot-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-boot-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-boot-examples)**
 
 ## 参考
 
 [Spring Data JPA - Reference Documentation](http://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
 
-[Spring Data JPA——参考文档 中文版](https://www.gitbook.com/book/ityouknow/spring-data-jpa-reference-documentation/details)
+[Spring Data JPA——参考文档 中文版](https://www.gitbook.com/book/dadaguo/spring-data-jpa-reference-documentation/details)
 
 
 
 -------------
 
 **作者：dadaguo**  
-**出处：[www.ityouknow.com](http://www.ityouknow.com)**   
+**出处：[www.dadaguo.com](http://www.dadaguo.com)**   
 **版权所有，欢迎保留原文链接进行转载：)**

@@ -68,7 +68,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/ityouknow/spring-cloud-starter/     # 配置git仓库的地址
+          uri: https://github.com/dadaguo/spring-cloud-starter/     # 配置git仓库的地址
           search-paths: config-repo                             # git仓库地址下的相对地址，可以配置多个，用,分割。
           username:                                             # git仓库的账号
           password:                                             # git仓库的密码
@@ -112,7 +112,7 @@ public class ConfigServerApplication {
     "state": null, 
     "propertySources": [
         {
-            "name": "https://github.com/ityouknow/spring-cloud-starter/config-repo/neo-config-dev.properties", 
+            "name": "https://github.com/dadaguo/spring-cloud-starter/config-repo/neo-config-dev.properties", 
             "source": {
                 "neo.hello": "hello im dev"
             }
@@ -229,12 +229,12 @@ class HelloController {
 
 我们在进行一些小实验，手动修改```neo-config-dev.properties```中配置信息为：```neo.hello=hello im dev update1```提交到github,再次在浏览器访问```http://localhost:8002/hello```，返回：```neo.hello: hello im dev update```，说明获取的信息还是旧的参数，这是为什么呢？因为springboot项目只有在启动的时候才会获取配置文件的值，修改github信息后，client端并没有在次去获取，所以导致这个问题。如何去解决这个问题呢？留到下一章我们在介绍。
 
-**[示例代码-github](https://github.com/ityouknow/spring-cloud-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-cloud-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-cloud-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-cloud-examples)**
 
 -------------
 **作者：dadaguo**  
-**出处：[http://www.ityouknow.com/](http://www.ityouknow.com/springcloud/2017/05/22/springcloud-config-git.html)**      
+**出处：[http://www.dadaguo.com/](http://www.dadaguo.com/springcloud/2017/05/22/springcloud-config-git.html)**      
 **版权归作者所有，转载请注明出处** 
 

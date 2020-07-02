@@ -128,7 +128,7 @@ public class GateWayApplication {
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route("path_route", r -> r.path("/about")
-						.uri("http://ityouknow.com"))
+						.uri("http://dadaguo.com"))
 				.build();
 	}
 
@@ -169,16 +169,16 @@ spring:
     gateway:
       routes:
        - id: time_route
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
          - After=2018-01-20T06:06:06+08:00[Asia/Shanghai]
 ```
 
 Spring 是通过 ZonedDateTime 来对时间进行的对比，ZonedDateTime  是 Java 8 中日期时间功能里，用于表示带时区的日期与时间信息的类，ZonedDateTime 支持通过时区来设置时间，中国的时区是：`Asia/Shanghai`。
 
-After Route Predicate 是指在这个时间之后的请求都转发到目标地址。上面的示例是指，请求时间在 2018年1月20日6点6分6秒之后的所有请求都转发到地址`http://ityouknow.com`。`+08:00`是指时间和UTC时间相差八个小时，时间地区为`Asia/Shanghai`。
+After Route Predicate 是指在这个时间之后的请求都转发到目标地址。上面的示例是指，请求时间在 2018年1月20日6点6分6秒之后的所有请求都转发到地址`http://dadaguo.com`。`+08:00`是指时间和UTC时间相差八个小时，时间地区为`Asia/Shanghai`。
 
-添加完路由规则之后，访问地址`http://localhost:8080`会自动转发到`http://ityouknow.com`。
+添加完路由规则之后，访问地址`http://localhost:8080`会自动转发到`http://dadaguo.com`。
 
 Before Route Predicate 刚好相反，在某个时间之前的请求的请求都进行转发。我们把上面路由规则中的 After 改为 Before，如下：
 
@@ -188,7 +188,7 @@ spring:
     gateway:
       routes:
        - id: after_route
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
          - Before=2018-01-20T06:06:06+08:00[Asia/Shanghai]
 ```
@@ -203,7 +203,7 @@ spring:
     gateway:
       routes:
        - id: after_route
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
          - Between=2018-01-20T06:06:06+08:00[Asia/Shanghai], 2019-01-20T06:06:06+08:00[Asia/Shanghai]
 ```
@@ -220,18 +220,18 @@ spring:
     gateway:
       routes:
   		 - id: cookie_route
-              uri: http://ityouknow.com
+              uri: http://dadaguo.com
               predicates:
-              - Cookie=ityouknow, kee.e
+              - Cookie=dadaguo, kee.e
 ```
 
 使用 curl 测试，命令行输入:
 
 ```
-curl http://localhost:8080 --cookie "ityouknow=kee.e"
+curl http://localhost:8080 --cookie "dadaguo=kee.e"
 ```
 
-则会返回页面代码，如果去掉`--cookie "ityouknow=kee.e"`，后台汇报 404 错误。
+则会返回页面代码，如果去掉`--cookie "dadaguo=kee.e"`，后台汇报 404 错误。
 
 ### 通过 Header 属性匹配
 
@@ -243,7 +243,7 @@ spring:
     gateway:
       routes:
       - id: header_route
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
         - Header=X-Request-Id, \d+
 ```
@@ -266,16 +266,16 @@ spring:
     gateway:
       routes:
       - id: host_route
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
-        - Host=**.ityouknow.com
+        - Host=**.dadaguo.com
 ```
 
 使用 curl 测试，命令行输入:
 
 ```
-curl http://localhost:8080  -H "Host: www.ityouknow.com" 
-curl http://localhost:8080  -H "Host: md.ityouknow.com" 
+curl http://localhost:8080  -H "Host: www.dadaguo.com" 
+curl http://localhost:8080  -H "Host: md.dadaguo.com" 
 ```
 
 经测试以上两种 host 均可匹配到 host_route 路由，去掉 host 参数则会报 404 错误。
@@ -290,7 +290,7 @@ spring:
     gateway:
       routes:
       - id: method_route
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
         - Method=GET
 ```
@@ -321,7 +321,7 @@ spring:
     gateway:
       routes:
       - id: host_route
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
         - Path=/foo/{segment}
 ```
@@ -348,7 +348,7 @@ spring:
     gateway:
       routes:
       - id: query_route
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
         - Query=smile
 ```
@@ -372,7 +372,7 @@ spring:
     gateway:
       routes:
       - id: query_route
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
         - Query=keep, pu.
 ```
@@ -398,7 +398,7 @@ spring:
     gateway:
       routes:
       - id: remoteaddr_route
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
         - RemoteAddr=192.168.1.1/24
 ```
@@ -423,7 +423,7 @@ spring:
     gateway:
       routes:
        - id: host_foo_path_headers_to_httpbin
-        uri: http://ityouknow.com
+        uri: http://dadaguo.com
         predicates:
         - Host=**.foo.org
         - Path=/headers
@@ -445,9 +445,9 @@ spring:
 通过今天的学习发现 Spring Cloud Gateway 使用非常的灵活，可以根据不同的情况来进行路由分发，在实际项目中可以自由组合使用。同时 Spring Cloud Gateway 还有更多很酷的功能，比如 Filter 、熔断和限流等，下次我们继续学习 Spring Cloud Gateway 的高级功能。
 
 
-**[示例代码-github](https://github.com/ityouknow/spring-cloud-examples)**
+**[示例代码-github](https://github.com/dadaguo/spring-cloud-examples)**
 
-**[示例代码-码云](https://gitee.com/ityouknow/spring-cloud-examples)**
+**[示例代码-码云](https://gitee.com/dadaguo/spring-cloud-examples)**
 
 
 ## 参考

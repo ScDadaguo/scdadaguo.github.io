@@ -61,7 +61,7 @@ jvm体系总体分四大块：
 
 >  *几个小问题？*  
 >  *1、JVM初始化步骤 ？ 2、类初始化时机 ？3、哪几种情况下，Java虚拟机将结束生命周期？*  
->  *答案参考这篇文章[jvm系列(一):java类的加载机制](http://www.cnblogs.com/ityouknow/p/5603287.html)*
+>  *答案参考这篇文章[jvm系列(一):java类的加载机制](http://www.cnblogs.com/dadaguo/p/5603287.html)*
 
 
 **类加载器**
@@ -112,7 +112,7 @@ jvm体系总体分四大块：
 - 空间分配担保。每次进行Minor GC时，JVM会计算Survivor区移至老年区的对象的平均大小，如果这个值大于老年区的剩余值大小则进行一次Full GC，如果小于检查HandlePromotionFailure设置，如果true则只进行Monitor GC,如果false则进行Full GC。   
 
 > *如何通过参数来控制个各个内存区域*  
-> *参考此文章：[jvm系列(二):JVM内存结构](http://www.cnblogs.com/ityouknow/p/5610232.html)*
+> *参考此文章：[jvm系列(二):JVM内存结构](http://www.cnblogs.com/dadaguo/p/5610232.html)*
 
 ## GC算法 垃圾回收
 
@@ -149,7 +149,7 @@ GC最基础的算法有三种：标记 -清除算法、复制算法、标记-压
 - G1收集器，G1 (Garbage-First)是一款面向服务器的垃圾收集器,主要针对配备多颗处理器及大容量内存的机器. 以极高概率满足GC停顿时间要求的同时,还具备高吞吐量性能特征  
 
 
-> *GC算法和垃圾回收器算法图解以及更详细内容参考 [jvm系列(三):GC算法 垃圾收集器](http://www.cnblogs.com/ityouknow/p/5614961.html)*  
+> *GC算法和垃圾回收器算法图解以及更详细内容参考 [jvm系列(三):GC算法 垃圾收集器](http://www.cnblogs.com/dadaguo/p/5614961.html)*  
 
 
 
@@ -174,11 +174,11 @@ GC最基础的算法有三种：标记 -清除算法、复制算法、标记-压
 
 Young GC日志:
  
-![](http://ityouknow.com/assets/images/2017/jvm/Young GC.png)
+![](http://dadaguo.com/assets/images/2017/jvm/Young GC.png)
 
 Full GC日志:
  
-![](http://ityouknow.com/assets/images/2017/jvm/Full GC.png)
+![](http://dadaguo.com/assets/images/2017/jvm/Full GC.png)
 
 **调优命令**  
 
@@ -191,7 +191,7 @@ Sun JDK监控和故障处理命令有jps jstat jmap jhat jstack jinfo
 - jstack，用于生成java虚拟机当前时刻的线程快照。
 - jinfo，JVM Configuration info 这个命令作用是实时查看和调整虚拟机运行参数。
 
->  *详细的命令使用参考这里[jvm系列(四):jvm调优-命令篇](http://www.ityouknow.com/java/2016/01/01/jvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4%E7%AF%87.html)*
+>  *详细的命令使用参考这里[jvm系列(四):jvm调优-命令篇](http://www.dadaguo.com/java/2016/01/01/jvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4%E7%AF%87.html)*
 
 **调优工具**  
 
@@ -202,10 +202,10 @@ Sun JDK监控和故障处理命令有jps jstat jmap jhat jstack jinfo
 - MAT，Memory Analyzer Tool，一个基于Eclipse的内存分析工具，是一个快速、功能丰富的Java heap分析工具，它可以帮助我们查找内存泄漏和减少内存消耗  
 - GChisto，一款专业分析gc日志的工具  
 
->  *工具使用参考 [jvm系列(七):jvm调优-工具篇](http://www.ityouknow.com/java/2017/02/22/jvm-tool.html)*
+>  *工具使用参考 [jvm系列(七):jvm调优-工具篇](http://www.dadaguo.com/java/2017/02/22/jvm-tool.html)*
 
 -------------
 
 **作者：dadaguo**  
-**出处：[http://www.ityouknow.com/](http://www.ityouknow.com/java/2017/03/01/jvm-overview.html)**      
+**出处：[http://www.dadaguo.com/](http://www.dadaguo.com/java/2017/03/01/jvm-overview.html)**      
 **版权归作者所有，转载请注明出处** 

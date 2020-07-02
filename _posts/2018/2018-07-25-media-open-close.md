@@ -13,7 +13,7 @@ excerpt: 据统计，2017年中国在册新闻调查记者仅剩175人。
 
 ![](http://www.itmind.net/assets/images/2018/life/xdata.png)
 
-大家如果还想看就只能访问我的博客：[www.ityouknow.com](http://www.itmind.net/)去阅读了。经过这么一件事也引起了一些思考：为什么会被删X？中国人的发声之路都经历了什么？
+大家如果还想看就只能访问我的博客：[www.dadaguo.com](http://www.itmind.net/)去阅读了。经过这么一件事也引起了一些思考：为什么会被删X？中国人的发声之路都经历了什么？
 
 ![](http://www.itmind.net/assets/images/2018/life/dazhen.png)
 
