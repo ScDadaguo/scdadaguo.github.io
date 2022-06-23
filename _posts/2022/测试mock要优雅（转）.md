@@ -1,0 +1,391 @@
+---
+layout: post
+title: 测试mock要优雅（转）
+category: spring
+tags: [spring]
+keywords: mock
+---
+
+测试mock要优雅（转）
+================
+转自-[谢恩德](https://github.com/DDGlove )
+
+作者github:https://github.com/DDGlove
+<a name="Ooyew"></a>
+## 
+<a name="IWgXT"></a>
+## 小剧场：发现问题
+小D	：阿康，我最近需要给测试做一个东西**:在测试过程中要跳过某些调用远程的方法**，要怎么做啊？
+阿康 ：写一个不执行远程方法的接口不就好了吗？或者在代码里根据条件判断下要不要执行远程方法。
+小D	：还要写新接口或者改代码啊，一点都不优雅，还有**更优雅的方法**吗？
+阿康 ：那就多利用**Spring**和**java代理**做**mock**对象，我只能帮你到这里了。
+小D	：哎，别走啊，别走啊，展开说说展开说说
+
+<a name="AbjHf"></a>
+## 思考问题
+
+**什么是mock** :作为一个动词，mock是模拟、模仿的意思；作为一个名词，mock是能够模仿真实对象行为的模拟对象。软件测试中，mock所模拟的对象一定不是我们所测试的对象，而是 SUT 的依赖（dependency）。换句话说，mock 的作用是模拟 SUT 依赖对象的行为。
+> 测试的对象一般称之为SUT(Software Under Test)
+
+参考：[https://blog.csdn.net/g6U8W7p06dCO99fQ3/article/details/114324301](https://blog.csdn.net/g6U8W7p06dCO99fQ3/article/details/114324301)
+
+**mock的时候要注意什么**:
+
+1. mock的对象要尽量准确：在A对象中使用了B,B对象使用了C,的情况，如果我们要对C跳过执行，那就最好对C进行mock,这样在测试过程中，我们依然还可以测试到B中的逻辑；如果直接mockB，可能就没覆盖到B的逻辑了。
+1. mock要尽量不要有大量的开发量：如果我们在使用mock的过程，因为mock而要多写很多代码，那就变得得不偿失了
+1. mock还需要考虑性能/可用性/易用性
+
+<a name="cbDJd"></a>
+## 解决问题
+**前话**： @Resource注解注入对象时，先使用byName：找名字相同的对象，如果没有再使用byType：找类型相同的对象。
+<a name="Y6WIv"></a>
+###  场景一：只在测试或开发环境使用mock
+如：发短信（发短信太贵了，测试环境我们就不发短信了吧） ；远程服务不提供（我依赖的服务不提供测试环境给我，ToT）
+<a name="sh2Jy"></a>
+#### 思路：
+在项目启动的时候，读取一个配置（可以是环境标识，也可以是一个独立的配置），根据不同的配置加载不同的实现类到对应的SpringContext里，调用方正常使用。
+
+<a name="rCltt"></a>
+#### 代码：
+用短信服务举例：
+```java
+//短信服务接口
+package com.souche.cheniu.server.demo;
+
+public interface SmsService {
+
+    void sendSms(String phone);
+
+    boolean verifySms(String phone, String smsCode);
+}
+```
+```java
+//短信服务真实实现
+package com.souche.cheniu.server.demo;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Service;
+
+/**
+ *  真实发短信服务
+ */
+@Service
+@ConditionalOnProperty(name = "contract.autotest", havingValue = "false", matchIfMissing = true)
+public class SmsServiceImpl implements SmsService{
+    @Override
+    public void sendSms(String phone) {
+        System.out.println("我去真实发短信了");
+    }
+
+    @Override
+    public boolean verifySms(String phone, String smsCode) {
+        System.out.println("我去真实验短信了");
+        return true;
+    }
+}
+```
+```java
+//短信服务mock实现
+package com.souche.cheniu.server.demo;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Service;
+
+/**
+ *  mock发短信服务
+ */
+@Service
+@ConditionalOnProperty(name = "contract.autotest", havingValue = "true", matchIfMissing = false)
+public class SmsServiceMockImpl implements SmsService{
+    @Override
+    public void sendSms(String phone) {
+        System.out.println("我不去真实发短信");
+    }
+
+    @Override
+    public boolean verifySms(String phone, String smsCode) {
+        System.out.println("我不去真实验短信");
+        return true;
+    }
+}
+```
+```java
+//短信服务调用方实现
+package com.souche.cheniu.server.demo;
+
+import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
+
+@Service
+public class UserLoginServiceImpl {
+
+    @Resource
+    SmsService smsService;
+
+    public void beforeLogin(String userId) {
+        System.out.println("真实查询用户信息，获得手机号");
+        smsService.sendSms("用户手机号");
+    }
+
+    public boolean login(String userId, String smsCode) {
+        System.out.println("真实查询用户信息，获得手机号");
+        return smsService.verifySms("用户手机号", smsCode);
+    }
+
+}
+```
+```java
+//测试方法
+ @Test
+    public void test() {
+        userService.beforeLogin("123");
+        userService.login("123","888888");
+    }
+
+//添加了配置 contract.autotest = true 的测试结果：
+真实查询用户信息，获得手机号
+我不去真实发短信
+真实查询用户信息，获得手机号
+我不去真实验短信
+
+//添加了配置 contract.autotest = false或者没有该配置 的测试结果：
+真实查询用户信息，获得手机号
+我去真实发短信了
+真实查询用户信息，获得手机号
+我去真实验短信了
+```
+<a name="mELH7"></a>
+#### 优点：
+非常优雅： 调用者完全不需要改动，被mock对象只做按需加载的改动。
+非常高效：在服务加载期间按需加载了相应实现类，无额外的代码。
+<a name="cuPFM"></a>
+#### 缺点：
+不灵活： 不能动态切换走什么实现，如果需要切换需要修改配置和重启服务。
+
+
+<a name="MTFSD"></a>
+### 场景二：mock和真实的方法都需要保留，且服务类的入参都有公共参数。
+如：生产某些用户绕过发短信（我们发短信服务所有接口入参刚好都设置了操作员参数，现在测试同学的手机号需要绕过短信验证的过程，比如需要自动化测试）
+
+<a name="WDHIc"></a>
+#### 思路：
+既然每个接口都有共同参数，那我们可以通过FactoryBean返回一个能根据不同的参数值转发到不同的实现类功能的代理类，而完成mock。
+
+<a name="xDyH6"></a>
+#### 代码：
+用短信服务举例
+```java
+//短信服务接口 都有operator字段
+package com.souche.cheniu.server.demo;
+
+public interface SmsService {
+
+    void sendSms(String operator, String phone);
+
+    boolean verifySms(String operator, String phone, String smsCode);
+}
+```
+```java
+package com.souche.cheniu.server.demo;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Service;
+
+/**
+ *  真实发短信服务
+ */
+@Service
+public class SmsServiceImpl implements SmsService{
+    @Override
+    public void sendSms(String operator, String phone) {
+        System.out.println("我去真实发短信了");
+    }
+
+    @Override
+    public boolean verifySms(String operator, String phone, String smsCode) {
+        System.out.println("我去真实验短信了");
+        return true;
+    }
+}
+```
+```java
+package com.souche.cheniu.server.demo;
+
+import org.springframework.stereotype.Service;
+
+/**
+ *  mock发短信服务
+ */
+@Service
+public class SmsServiceMockImpl implements SmsService{
+    @Override
+    public void sendSms(String operator, String phone) {
+        System.out.println("我是测试人员，我不去真实发短信");
+    }
+
+    @Override
+    public boolean verifySms(String operator, String phone, String smsCode) {
+        System.out.println("我是测试人员，我不去真实验短信");
+        return true;
+    }
+}
+```
+```java
+//生成 可以自动需要实现类的 代理对象的 FactoryBean
+package com.souche.cheniu.server.demo;
+
+import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+@Primary
+@Component
+public class SmsServiceAutoFactory implements FactoryBean<SmsService>, ApplicationContextAware {
+
+    private ApplicationContext applicationContext;
+
+    @Override
+    public SmsService getObject() throws Exception {
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        InvocationHandler invocationHandler = new SmsServiceAutoFactory.SmsServiceInvocationHandler();
+        return (SmsService) Proxy.newProxyInstance(loader, new Class[]{SmsService.class}, invocationHandler);
+    }
+
+    @Override
+    public Class<?> getObjectType() {
+        return SmsService.class;
+    }
+
+    /**
+     * 根据是否需要mock,选择不同的处理类
+     */
+    public class SmsServiceInvocationHandler implements InvocationHandler {
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            String beanName;
+            boolean canMock = args != null
+                    && args.length > 0
+                    && args[0] != null
+                    && args[0] instanceof String
+                    && args[0].equals("test");
+            if (canMock) {
+                beanName = SmsServiceMockImpl.class.getSimpleName();
+                //建议打日志方便追踪
+            } else {
+                beanName = SmsServiceImpl.class.getSimpleName();
+            }
+            beanName = StringUtils.substring(beanName, 0, 1).toLowerCase() +
+                    StringUtils.substring(beanName, 1);
+            SmsService smsService = (SmsService) applicationContext.getBean(beanName);
+            return method.invoke(smsService, args);
+        }
+    }
+    
+    @Override
+    public void setApplicationContext(@NotNull ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
+}
+```
+```java
+//调用者
+package com.souche.cheniu.server.demo;
+
+import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
+
+@Service
+public class UserLoginServiceImpl {
+
+    @Resource
+    SmsService smsService;
+
+    public void beforeLogin(String userId) {
+        System.out.println("真实查询用户信息，获得手机号");
+        smsService.sendSms(userId, "用户手机号");
+    }
+
+    public boolean login(String userId, String smsCode) {
+        System.out.println("真实查询用户信息，获得手机号");
+        return smsService.verifySms(userId, "用户手机号", smsCode);
+    }
+
+}
+
+```
+```java
+//测试方法   
+@Test
+    public void test() {
+        userService.beforeLogin( "test");
+        userService.login("test","888888");
+    }
+//test是测试人员
+真实查询用户信息，获得手机号
+我是测试人员，我不去真实发短信
+真实查询用户信息，获得手机号
+我是测试人员，我不去真实验短信
+
+  @Test
+    public void test() {
+        userService.beforeLogin( "user");
+        userService.login("user","888888");
+	}
+真实查询用户信息，获得手机号
+我去真实发短信了
+真实查询用户信息，获得手机号
+我去真实验短信了
+```
+
+<a name="n2M5G"></a>
+#### 优点：
+非常优雅：调用者和真实对象完全不需要更改
+非常灵活：只需要修改参数，就可以选择是否需要mock
+<a name="QENiy"></a>
+#### 缺点：
+非常局限：需要接口所有方法都有相同的入参
+比较高效：经过了一层代理，但是对性能影响微小
+
+ps. 如果没有接口，而是一个类，可以写一个mock子类来继承该类，通过CGlib代理该类。
+想要通过开发来控制是否走代理可以通过@ConditionalOnProperty来控制mock和factory是否加载
+
+<a name="y8bLX"></a>
+### 场景三：mock和真实的方法都需要保留，且接口没有公共参数
+如我们的合同场景，在自动化测试需要mock，在正常情况保证走正常逻辑，且合同没有公共参数。
+<a name="njCTj"></a>
+#### 思路：
+我们可以通过ThreadLocal在入口传一个值，在实现类的代理类上取到这个值做判断使用哪个实现类。
+
+<a name="EZ3kG"></a>
+#### 代码：
+代码过多不贴了，详细可以看：
+cattle-farm项目（feature/auto-test 分支）中：
+com.souche.cattle.farm.server.config.WebMockConfig  ----mock前端参数拦截
+com.souche.cattle.farm.common.util.MockUtil   -------mock工具类
+com.souche.cattle.farm.common.util.TTLUtil     -------ThreadLocal工具类
+com.souche.cattle.farm.contract.impl.ContractSPIAutoFactory   -----cglib代理类生成FactoryBean
+com.souche.cattle.farm.contract.impl.ContractMockSPI  ----合同mock处理类
+
+<a name="aZteP"></a>
+#### 优点：
+**非常优雅**:所有参数的拦截都放在了拦截类里面，入口无需改动。实现类改动甚少。
+**可扩展性高**:抽取了mock工具类和mock拦截器，需要要新增别的mock，会比较方便。
+<a name="F4yoe"></a>
+#### 缺点：
+**相对高效**:一些不需要mock的api接口也会走到拦截类里判断一次，对性能影响微小。
+**相对局限**:这类方式只适合前端到后端，可以随意加个header。不适合dubbo,虽然从mockUtil角度来说，是不局限的，但是使用起来不够优雅了。
+
+<a name="tUcCj"></a>
+## 总结：
+我们不管是在开发过程中，或者是项目上线以后，都有需要对某个对象进行模拟的情况，利用好Spring IOC、DI和JAVA的动态代理、CGlib动态代理，就能实现优雅的mock对象。
+
+才疏学浅，欢迎大家指出错误。也欢迎大家提出自己的想法、意见和建议，内容有你才会变得更丰富完整。
+感谢[@郑康(zhengkang-qmlua)](/zhengkang-qmlua)和[@刘远兴(liuyuanxing-ou99b)](/liuyuanxing-ou99b)对本文的贡献。
